@@ -1,4 +1,3 @@
-
 main();
 
 function main() {
@@ -21,10 +20,11 @@ function getArticles() {
                 document.querySelector(".produits").appendChild(carte);
                 carte.classList.add("produit");
                 
+
                 let produitLien = document.createElement("a");
                 carte.appendChild(produitLien);
                 produitLien.href = `produit.html?id = ${resultat[article]._id}`;
-                produitLien.classList.add("lien");
+                produitLien.classList.add("stretched-link");
 
                 let produitImgDiv = document.createElement("div");
                 produitLien.appendChild(produitImgDiv);
@@ -37,12 +37,12 @@ function getArticles() {
                 let produitInfosDiv = document.createElement("div");
                 produitLien.appendChild(produitInfosDiv);
                 produitInfosDiv.classList.add("produit__infos");
-
+                
                 let produitInfoTitre = document.createElement("div");
                 produitInfosDiv.appendChild(produitInfoTitre);
                 produitInfoTitre.classList.add("produit__infos__titre");
                 produitInfoTitre.innerHTML = resultat[article].name;
-
+                
                 let produitInfoPrix = document.createElement("div");
                 produitInfosDiv.appendChild(produitInfoPrix);
                 produitInfoPrix.classList.add("produit__infos__prix");
@@ -53,6 +53,4 @@ function getArticles() {
                     }
                 })
                 
-        
-        
-}
+    }

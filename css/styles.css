@@ -6,32 +6,36 @@ body {
   
 a {
     text-decoration: none;
-    color: #352208;
+    color: yellow;
   }
 
-main .produits-container {
+a:hover {
+    color:white;
+}
+
+.produits-container {
     margin-top: 30px;
     padding-bottom: 70px;
     padding-top: 10px; 
 }
 
-main .produits-container .titre {
+.titre {
     text-align: center;
     margin-top: 20px;
     margin-left: 20px;
     font-size: 25px; 
   }
 
-main .produits-container .produits {
+.produits {
     display: flex;
     padding-top: 10px;
     flex-direction: column;
     align-items: center; 
 }
 
-main .produits-container .produits .produit {
+.produit {
     margin-top: 20px;
-    width: 90%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     background-color: chocolate;
@@ -41,7 +45,7 @@ main .produits-container .produits .produit {
     position: relative;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15); }
 
-main .produits-container .produits .produit .stretched-link .produit__img img{
+.produit__img img{
     width: 100%;
     
     object-fit: cover;
@@ -50,12 +54,11 @@ main .produits-container .produits .produit .stretched-link .produit__img img{
     border-top-right-radius: 20px;
 }
 
-main .produits-container .produits .produit  .produit__infos {
+.produit__infos {
     position: relative;
-    
 }
 
-main .produits-container .produits .produit .produit__infos__titre {
+.produit__infos__titre {
     margin-top: 10px;
     margin-left: 15px;
     font-size: 20px;
@@ -63,7 +66,7 @@ main .produits-container .produits .produit .produit__infos__titre {
     font-weight: 900; 
 }
 
-main .produits-container .produits .produit .produit__infos__prix {
+.produit__infos__prix {
     padding-left: 15px;
     font-weight: normal; 
 }
@@ -72,17 +75,22 @@ main .produits-container .produits .produit .produit__infos__prix {
 /*----------MediaQuery----------*/
 
 @media screen and (min-width: 700px) {
-    .main .produits-container h2 {
+    .produits-container h2 {
         display: flex;
         justify-content: center; }
-    .main .produits-container .produits { 
+
+    .produits { 
         display: flex;
         flex-direction: row;
         flex-flow: row wrap;
         justify-content: space-evenly;
-         }
-    .main .produits-container .produits .produit .stretched-link {
-        width: 40%;
-        height: 200px; 
-        color: red;} 
     }
+
+    .produit {
+        width: 40%;
+    }
+   
+
+    
+
+   
