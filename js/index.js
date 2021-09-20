@@ -20,7 +20,6 @@ function getArticles() {
                 document.querySelector(".produits").appendChild(carte);
                 carte.classList.add("produit");
                 
-
                 let produitLien = document.createElement("a");
                 carte.appendChild(produitLien);
                 produitLien.href = `produit.html?id = ${resultat[article]._id}`;
