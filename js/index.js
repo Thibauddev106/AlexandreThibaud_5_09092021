@@ -22,7 +22,7 @@ function getArticles() {
                 
                 let produitLien = document.createElement("a");
                 carte.appendChild(produitLien);
-                produitLien.href = `produit.html?id = ${resultat[article]._id}`;
+                produitLien.href = `produit.html?id=${resultat[article]._id}`;
                 produitLien.classList.add("stretched-link");
 
                 let produitImgDiv = document.createElement("div");
