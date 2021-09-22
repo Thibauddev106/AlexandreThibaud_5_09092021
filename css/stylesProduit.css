@@ -1,5 +1,6 @@
+
+
 body {
-    
     margin: 0;
     padding: 0;
   }
@@ -12,9 +13,7 @@ a:hover {
     color:white;
 }
 
-
-
-.produit-card {
+.produitCard {
     margin-top: 20px;
     width: 100%;
     display: flex;
@@ -24,7 +23,8 @@ a:hover {
     padding-bottom: 20px;
     justify-content: space-between;
     position: relative;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15); }
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+ }
 
 .img {
     width: 100%;
@@ -34,15 +34,41 @@ a:hover {
     border-top-right-radius: 20px;
 }
 
-.produit-card__infos__titre {
+.produitCard__infos__titre {
     margin-top: 10px;
     margin-left: 15px;
     font-size: 20px;
     margin-bottom: 5px;
-    font-weight: 900; 
+    font-weight: bold;
+    color: yellow; 
 }
 
-.produit__infos__prix {
+.produitCard__infos__prix {
     padding-left: 15px;
-    font-weight: normal; 
+    padding-bottom: 10px;
+    color: yellow; 
+}
+
+.produitCard__infos__description {
+    padding-left: 15px;
+    padding-bottom: 10px;
+    color: yellow;
+}
+
+.numOurson {
+    padding-left: 15px;
+}
+
+#numOurson {
+    margin-left: 15px;
+    margin-right: 400px; 
+}
+
+.couleur {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+label {
+    color: yellow;
 }

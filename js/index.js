@@ -45,11 +45,15 @@ function getArticles() {
                 let produitInfoPrix = document.createElement("div");
                 produitInfosDiv.appendChild(produitInfoPrix);
                 produitInfoPrix.classList.add("produit__infos__prix");
-                produitInfoPrix.innerHTML = resultat[article].price;
+                 //converstion du prix
+                resultat[article].price = resultat[article].price/100;
+                produitInfoPrix.innerText = new Intl.NumberFormat("fr-FR", {
+                    style: "currency", currency: "EUR",
+                }).format(resultat[article].price);
 
 
                 
                     }
-                })
+                });
                 
     }
