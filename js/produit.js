@@ -15,6 +15,7 @@ function main() {
 }
 
 function getArticle() {
+    //
     fetch(`http://localhost:3000/api/teddies/${id}`)
         .then(function (reponse) {
             return reponse.json();
@@ -24,15 +25,14 @@ function getArticle() {
         })
         .then(function(resultatApi) {
         article = resultatApi;
-        
         produitCardName.innerHTML = article.name;
         produitCardImg.src = article.imageUrl;
         produitCardDescription.innerText = article.description;
-        // Formatage du prix pour l'afficher en euros
+        // afficher prix en euros
         article.price = article.price / 100;
         produitCardPrice.innerText = new Intl.NumberFormat("fr-FR", {
         style: "currency", currency: "EUR",
         }).format(article.price);
-        
+
         })
     }
