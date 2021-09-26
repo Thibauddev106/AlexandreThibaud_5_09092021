@@ -17,13 +17,13 @@ function main() {
 function getArticle() {
     //
     fetch(`http://localhost:3000/api/teddies/${id}`)
-        .then(function (reponse) {
-            return reponse.json();
-        })
-        .catch((error) => {
-            alert("probleme de serveur")
-        })
-        .then(function(resultatApi) {
+    .then(function (reponse) {
+        return reponse.json();
+    })
+    .catch((error) => {
+        alert("probleme de serveur")
+    })
+    .then(function(resultatApi) {
         article = resultatApi;
         produitCardName.innerHTML = article.name;
         produitCardImg.src = article.imageUrl;
@@ -34,5 +34,5 @@ function getArticle() {
         style: "currency", currency: "EUR",
         }).format(article.price);
 
-        })
-    }
+    })
+}
