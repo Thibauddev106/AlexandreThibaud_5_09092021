@@ -6,16 +6,17 @@ const produitCardImg = document.querySelector(".img");
 const produitCardName = document.querySelector(".produitCard__infos__titre");
 const produitCardDescription = document.querySelector(".produitCard__infos__description");
 const produitCardPrice = document.querySelector(".produitCard__infos__prix");
-const numOurson = document.querySelector("#numOurson");
+const nbrOurson = document.querySelector("#numOurson");
 
 main();
 
 function main() {
     getArticle();
+    ajouterAuPanier();
 }
 
 function getArticle() {
-    //
+    // On récupère uniquement le produit dont on a besoin via le paramètre dans la requête
     fetch(`http://localhost:3000/api/teddies/${id}`)
     .then(function (reponse) {
         return reponse.json();
@@ -24,6 +25,7 @@ function getArticle() {
         alert("probleme de serveur")
     })
     .then(function(resultatApi) {
+        // On place les données reçues via l'API aux bons endroits sur la page
         article = resultatApi;
         produitCardName.innerHTML = article.name;
         produitCardImg.src = article.imageUrl;
@@ -36,3 +38,37 @@ function getArticle() {
 
     })
 }
+
+function ajouterAuPanier() {
+    const ajouterAuPanierBtn = document.querySelector(".ajouter");
+    const confirmation = document.querySelector(".ajouterPanierConfirmation");
+    const textConfirm =document.querySelector(".confirmationText");
+
+    ajouterAuPanierBtn.addEventListener("click", () => {
+        if (nbrOurson.value > 0 && nbrOurson.value < 100){
+            //création de l'article qui sera ajouté au panier
+            let produitAjoute = {
+                name: produitCardName.innerHTML,
+                price: parseFloat(produitCardPrice.innerHTML),
+                quantity: parseFloat(document.querySelector("#numOurson").value),
+                _id: id,
+            };
+
+            // gestion localStorage
+            let tabProduitsPanier = [];
+            console.log(tabProduitsPanier);
+            /* si le localStorage est rempli, on récupère son contenu,
+            on l'insère dans le tableau tabProduitsPanier,
+            et on le renvoit vers le localStorage avec le nouveau produit ajouté.*/
+            if (localStorage.getItem("produits") !== null) {
+                tabProduitsPanier = JSON.parse(localStorage.getItem("produits"));
+            }
+
+            // si le localStorage est vide, on le crée avec le produit ajouté
+            tabProduitsPanier.push(produitAjoute);
+            localStorage.setItem("produits", JSON.stringify(tabProduitsPanier));
+            console.log(localStorage);
+        }
+    });
+}
+

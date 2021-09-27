@@ -18,90 +18,55 @@
             <a class="btnPanier" href="panier.html"><button class="btn btn-secondary my-2 my-sm-0"  type="submit">Votre Panier</button></a>
         </div>
     </nav>
-
-    <main class="page">
-        <section class="shopping-cart dark">
-            <div class="container">
-               <div class="block-heading">
-                 <h2>Votre panier</h2>
-               </div>
-               <div class="content">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-8">
-                            <div class="items">
-                                <div class="produit">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <img class="img-fluid mx-auto d-block image" src="">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="info">
-                                                <div class="row">
-                                                    <div class="col-md-5 product-name">
-                                                        <div class="product-name">
-                                                            <a href="#">Lorem Ipsum dolor</a>
-                                                            <div class="product-info">
-                                                                <div>Description :<span class="value"></span></div>
-                                                                <div>Couleur :<span class="value"></span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 quantity">
-                                                        <label for="quantity">Quantité :</label>
-                                                        <input id="quantity" type="number" value ="1" class="form-control quantity-input">
-                                                    </div>
-                                                    <div class="col-md-3 price">
-                                                        <span>€</span>
-                                                    </div>
-                                                    <div class="effacerArticle my-3">
-                                                        <a href="panier.html">
-                                                        <button type="button" class="btn btn-danger btn-block">Vider le panier</button>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>   
-                        </div>
-                        <div class="col-md-12 col-lg-4">
-                            <div class="total">
-                                <div class="total-item"><span class="text">Total</span><span class="price">$360</span></div>
+    <main>
+        <div class="container">
+            <div class="cart-card">
+                <h2 class="cart">Votre panier</h2>
+                <div class="cart-card__recap">
+                    <div class="cart-card__recap__row ">
+                        <div class="cart-card__recap__title first-line">Nom</div>
+                        <div class="cart-card__recap__title title-quantity first-line">Quantité</div>
+                        <div class="cart-card__recap__title data-price first-line">Prix </div>
+                    </div>                     
+                    <div class="width-to-empty-cart">
+                        <a href="panier.html">
+                            <div class="cart-card__form__button viderLePanier">
+                                Vider le panier
                             </div>
-                        </div>
-                    </div> 
+                        </a>
+                    </div>
+                    <h2 class="total"></h2>            
+                </div>
+                <div class="siPanierVide">
+                    <h2>Votre panier est vide ! <a href="index.html">Remplissez votre Panier !</a></h2>
                 </div>
             </div>
-       </section>
-       <form>
-        <h3 class="titreForm">Votre adresse de livraison</h2>
-        <div class="form-group my-3">
-            <input type="text" class="form-control item" id="prenom" placeholder="Prénom">
+            <form>
+                <h3 class="titreForm">Votre adresse de livraison</h2>
+                <div class="form-group my-3">
+                    <input type="text" class="form-control item" id="prenom" placeholder="Prénom">
+                </div>
+                <div class="form-group my-3">
+                <input type="text" class="form-control item" id="nom" placeholder="Nom">
+                </div>
+                <div class="form-group my-3">
+                    <input type="text" class="form-control item" id="Adresse" placeholder="Adresse">
+                </div>
+                <div class="form-group my-3">
+                    <input type="password" class="form-control item" id="ville" placeholder="Ville">
+                </div>
+                <div class="form-group my-3">
+                    <input type="text" class="form-control item" id="email" placeholder="Email">
+                </div>
+                <div class="btnCommander text-center my-3">
+                    <button type="button" class="btn btn-block btn-primary my-5 btn-lg text-center create-account">Commander</button>
+                </div>
+            </form>
         </div>
-        <div class="form-group my-3">
-        <input type="text" class="form-control item" id="nom" placeholder="Nom">
-        </div>
-        <div class="form-group my-3">
-            <input type="text" class="form-control item" id="Adresse" placeholder="Adresse">
-        </div>
-        <div class="form-group my-3">
-            <input type="password" class="form-control item" id="ville" placeholder="Ville">
-        </div>
-        <div class="form-group my-3">
-            <input type="text" class="form-control item" id="email" placeholder="Email">
-        </div>
-        <div class="btnCommander text-center my-3">
-            <button type="button" class="btn btn-block btn-primary my-5 btn-lg text-center create-account">Commander</button>
-        </div>
-        </form>
-    <div class="siPanierVide">
-        <h2>Votre panier est vide ! <a href="index.html">Remplissez votre Panier !</a></h2>
-
-    </div>
     </main>
     <footer class=" text-white bg-warning p-3 text-end">
         <a href="" class="mentions text-decoration-none">Mentions légales</a>
     </footer>
+
+    <script src="./js/panier.js"></script>
 </body>
