@@ -36,6 +36,12 @@ function getArticle() {
         style: "currency", currency: "EUR",
         }).format(article.price);
 
+        let couleurSelect = document.getElementById("coulSelect");
+        for (let i = 0; i < article.colors.length; i++) {
+            let option = document.createElement("option");
+            option.innerText = article.colors[i];
+            couleurSelect.appendChild(option);
+        }
     })
 }
 

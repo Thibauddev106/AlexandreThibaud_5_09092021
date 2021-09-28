@@ -1,7 +1,7 @@
 // Stocker la récuperation des valeurs du formulaire dans le localstorage 
 
 //Déclaration de la variable "produitEnregistrer" dans laquelle on met les key et les values qui sont dans le localstorage
-let produitEnregistrer = document.querySelector(".cart-card__recap");
+let produitEnregistrer = document.querySelector(".cartePanier__recap");
 // JSON.parse pour convertir les données au format JSON qui sont dans le localstorage en objet JavaScript
 let copieLS = JSON.parse(localStorage.getItem("produits"));
 
@@ -15,7 +15,7 @@ function main() {
 
 function affichageCarte() {
     let test = document.querySelector(".width-to-empty-cart");
-    let carteProduit = document.querySelector(".cart-card");
+    let carteProduit = document.querySelector(".cartePanier");
     let carteVide = document.querySelector(".siPanierVide")
 
 /* Si le tableau enregistré du localStorage contient au moins un objet,
@@ -32,21 +32,21 @@ on affiche le panier et on supprime le message d'erreur*/
     for (let article in copieLS) {
         let articleLigne = document.createElement("div");
         produitEnregistrer.insertBefore(articleLigne,test);
-        articleLigne.classList.add("cart-card__recap__row", "article-ligne");
+        articleLigne.classList.add("cartePanier__recap__row", "article-ligne");
 
         let articleNom = document.createElement("div");
         articleLigne.appendChild(articleNom);
-        articleNom.classList.add("cart-card__recap__title");
+        articleNom.classList.add("cartePanier__recap__title");
         articleNom.innerHTML = copieLS[article].name;
 
         let articleQuantite = document.createElement("div");
         articleLigne.appendChild(articleQuantite);
-        articleQuantite.classList.add("cart-card__recap__title","title-quantity");
+        articleQuantite.classList.add("cartePanier__recap__title","title-quantity");
         articleQuantite.innerHTML = copieLS[article].quantity;
 
         let articlePrix = document.createElement("div");
         articleLigne.appendChild(articlePrix);
-        articlePrix.classList.add("cart-card__recap__title", "data-price", "price");
+        articlePrix.classList.add("cartePanier__recap__title", "data-price", "price");
     
         // Affichage du prix avec la convertion en euro
         articlePrix.innerHTML = new Intl.NumberFormat("fr-FR", {

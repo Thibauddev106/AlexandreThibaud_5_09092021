@@ -7,10 +7,10 @@ body {
 	text-decoration: none;
   }
 
-  h2.cart{
+  /*h2.cart{
 	  text-align: center;
   }
-  
+  */
 .container {
 	display: flex;
 	justify-content: center;
@@ -19,7 +19,7 @@ body {
 	width: 100%;
   }
   
-  .container .cart-card {
+  .container .cartePanier {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
@@ -28,22 +28,22 @@ body {
 	border-radius: 20px 20px 20px 20px;
   }
   
-  .container .cart-card .cart {
+  .container .cartePanier .cart {
 	margin-left: 10px;
   }
   
-  .container .cart-card__recap {
+  .container .cartePanier__recap {
 	margin: 10px 0 10px 10px;
 	width: 90%;
   }
   
-  .container .cart-card__recap__row {
+  .container .cartePanier__recap__row {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
   }
   
-  .container .cart-card__recap .first-line {
+  .container .cartePanier__recap .first-line {
 	display: flex;
 	justify-content: center;
 	align-self: center;
@@ -51,7 +51,7 @@ body {
 	text-decoration: underline;
   }
   
-  .container .cart-card__recap__title {
+  .container .cartePanier__recap__title {
 	display: flex;
 	justify-content: center;
 	align-self: center;
@@ -60,7 +60,7 @@ body {
 	font-weight: bold;
   }
   
-  .container .cart-card__recap__data {
+  .container .cartePanier__recap__data {
 	
 	display: flex;
 	justify-content: center;
@@ -70,7 +70,7 @@ body {
 	height: 30px;
   }
   
-  .container .cart-card__recap__data .fa-trash:hover {
+  .container .cartePanier__recap__data .fa-trash:hover {
 	cursor: pointer;
 	opacity: 0.7;
 	font-size: 17px;

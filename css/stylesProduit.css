@@ -5,17 +5,10 @@ body {
     padding: 0;
   }
   
-a {
-    color: yellow;
-  }
-
-a:hover {
-    color:white;
-}
-
 .produitCard {
     margin-top: 20px;
     width: 100%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     background-color: chocolate;

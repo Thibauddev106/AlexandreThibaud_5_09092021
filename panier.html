@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/panier.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    
 
     <title>Panier</title>
 </head>
@@ -20,29 +20,30 @@
     </nav>
     <main class="bg-secondary">
         <div class="container">
-            <div class="cart-card">
-                <h2 class="cart">Votre panier</h2>
-                <div class="cart-card__recap">
-                    <div class="cart-card__recap__row ">
-                        <div class="cart-card__recap__title first-line">Nom</div>
-                        <div class="cart-card__recap__title title-quantity first-line">Quantité</div>
-                        <div class="cart-card__recap__title data-price first-line">Prix </div>
+            <div class="cartePanier">
+                <h2 class="cartetitre text-center my-4">Votre panier</h2>
+                <div class="cartePanier__recap">
+                    <div class="cartePanier__recap__row my-3">
+                        <div class="cartePanier__recap__title first-line">Nom</div>
+                        <div class="cartePanier__recap__title title-quantity first-line">Quantité</div>
+                        <div class="cartePanier__recap__title data-price first-line">Prix </div>
                     </div>                     
                     <div class="width-to-empty-cart">
-                        <a href="panier.html">
-                            <div class="cart-card__form__button text-center viderLePanier">
-                                Vider le panier
+                        <a href="index.html">
+                            <div class="cartePanier__form__button text-center">
+                                <button type="button" class="btn btn-block btn-danger mt-4 text-center viderLePanier">Vider le panier</button>
+                                <button type="button" class="btn btn-block btn-success mt-4 text-center">Retour à l'accueil</button>
                             </div>
                         </a>
                     </div>
-                    <h2 class="total"></h2>            
+                    <h2 class="total mx-4 mt-4 text-end"></h2>            
                 </div>
                 <div class="siPanierVide">
-                    <h2>Votre panier est vide ! <a href="index.html">Remplissez votre Panier !</a></h2>
+                    <h2 class="h2 text-center mb-4">Votre panier est vide !</h2>
                 </div>
             </div>
             <form>
-                <h3 class="titreForm">Votre adresse de livraison</h2>
+                <h3 class="titreForm text-center text-white">Votre adresse de livraison</h2>
                 <div class="form-group my-3">
                     <input type="text" class="form-control item" id="prenom" placeholder="Prénom" required>
                 </div>
@@ -65,7 +66,7 @@
         </div>
     </main>
     <footer class=" text-white bg-warning p-3 text-end">
-        <a href="" class="mentions text-decoration-none">Mentions légales</a>
+        <a href="#" class="mentions text-primary text-decoration-none">Mentions légales</a>
     </footer>
 
     <script src="./js/panier.js"></script>
