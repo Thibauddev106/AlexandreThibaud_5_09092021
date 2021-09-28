@@ -10,6 +10,7 @@ main();
 function main() {
     affichageCarte();
     viderPanier();
+    totalPanier();
 }
 
 function affichageCarte() {
@@ -46,8 +47,13 @@ on affiche le panier et on supprime le message d'erreur*/
         let articlePrix = document.createElement("div");
         articleLigne.appendChild(articlePrix);
         articlePrix.classList.add("cart-card__recap__title", "data-price", "price");
-    }
     
+        // Affichage du prix avec la convertion en euro
+        articlePrix.innerHTML = new Intl.NumberFormat("fr-FR", {
+            style: "currency",
+            currency: "EUR",
+        }).format(copieLS[article].price * copieLS[article].quantity);
+    }
 }
 
 function viderPanier() {
@@ -58,4 +64,36 @@ function viderPanier() {
       localStorage.clear();
     });
   }
+
+function totalPanier() {
+    let tabPrix = [];
+    let totalPrix = document.querySelector(".total");
+
+    // on push chaque prix du DOM dans un tableau
+    let prixArticleSelonQuantite = document.querySelectorAll(".price");
+    for (let prix in prixArticleSelonQuantite) {
+        tabPrix.push(prixArticleSelonQuantite[prix].innerHTML);   
+    }
+
+    // on enlève les undefined du tableau
+    tabPrix = tabPrix.filter((el) => {
+        return el != undefined;
+    })
+    // transformer en nombre chaque valeur du tableau
+    tabPrix = tabPrix.map((x) => parseFloat(x));
+
+    // additionner les valeurs du tableau pour avoir le prix total avec la méthode reduce
+    const reducer = (accumulateur, valeurCourante) => accumulateur + valeurCourante;
+    tabPrix = tabPrix.reduce(reducer);
+    console.log(tabPrix);
+
+    // affichage du prix avec converstion en euro
+    totalPrix.innerText = `Total : ${(tabPrix = new Intl.NumberFormat(
+        "fr-FR",
+        {
+          style: "currency",
+          currency: "EUR",
+        }
+      ).format(tabPrix))}`;
+}
 

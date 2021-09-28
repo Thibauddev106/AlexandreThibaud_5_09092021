@@ -18,7 +18,7 @@
             <a class="btnPanier" href="panier.html"><button class="btn btn-secondary my-2 my-sm-0"  type="submit">Votre Panier</button></a>
         </div>
     </nav>
-    <main>
+    <main class="bg-secondary">
         <div class="container">
             <div class="cart-card">
                 <h2 class="cart">Votre panier</h2>
@@ -30,7 +30,7 @@
                     </div>                     
                     <div class="width-to-empty-cart">
                         <a href="panier.html">
-                            <div class="cart-card__form__button viderLePanier">
+                            <div class="cart-card__form__button text-center viderLePanier">
                                 Vider le panier
                             </div>
                         </a>
@@ -44,19 +44,19 @@
             <form>
                 <h3 class="titreForm">Votre adresse de livraison</h2>
                 <div class="form-group my-3">
-                    <input type="text" class="form-control item" id="prenom" placeholder="Prénom">
+                    <input type="text" class="form-control item" id="prenom" placeholder="Prénom" required>
                 </div>
                 <div class="form-group my-3">
-                <input type="text" class="form-control item" id="nom" placeholder="Nom">
+                <input type="text" class="form-control item" id="nom" placeholder="Nom" required>
                 </div>
                 <div class="form-group my-3">
-                    <input type="text" class="form-control item" id="Adresse" placeholder="Adresse">
+                    <input type="text" class="form-control item" id="Adresse" placeholder="Adresse" required>
                 </div>
                 <div class="form-group my-3">
-                    <input type="password" class="form-control item" id="ville" placeholder="Ville">
+                    <input type="password" class="form-control item" id="ville" placeholder="Ville" required>
                 </div>
                 <div class="form-group my-3">
-                    <input type="text" class="form-control item" id="email" placeholder="Email">
+                    <input type="text" class="form-control item" id="email" placeholder="Email" required>
                 </div>
                 <div class="btnCommander text-center my-3">
                     <button type="button" class="btn btn-block btn-primary my-5 btn-lg text-center create-account">Commander</button>
