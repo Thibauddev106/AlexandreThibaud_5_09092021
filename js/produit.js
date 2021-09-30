@@ -47,8 +47,7 @@ function getArticle() {
 
 function ajouterAuPanier() {
     const ajouterAuPanierBtn = document.querySelector(".ajouter");
-    const confirmation = document.querySelector(".ajouterPanierConfirmation");
-    const textConfirm =document.querySelector(".confirmationText");
+   
 
     ajouterAuPanierBtn.addEventListener("click", () => {
         if (nbrOurson.value > 0 && nbrOurson.value < 100){
@@ -57,23 +56,26 @@ function ajouterAuPanier() {
                 name: produitCardName.innerHTML,
                 price: parseFloat(produitCardPrice.innerHTML),
                 quantity: parseFloat(document.querySelector("#numOurson").value),
+                colors: document.querySelector("#coulSelect").value,
                 _id: id,
             };
 
             // gestion localStorage
             let tabProduitsPanier = [];
-            console.log(tabProduitsPanier);
+            
             /* si le localStorage est rempli, on récupère son contenu,
             on l'insère dans le tableau tabProduitsPanier,
             et on le renvoit vers le localStorage avec le nouveau produit ajouté.*/
             if (localStorage.getItem("produits") !== null) {
                 tabProduitsPanier = JSON.parse(localStorage.getItem("produits"));
+                tabProduitsPanier.push(produitAjoute);
+                localStorage.setItem("produits", JSON.stringify(tabProduitsPanier));
             }
-
+            else {
             // si le localStorage est vide, on le crée avec le produit ajouté
             tabProduitsPanier.push(produitAjoute);
             localStorage.setItem("produits", JSON.stringify(tabProduitsPanier));
-            console.log(localStorage);
+            }
         }
     });
 }
