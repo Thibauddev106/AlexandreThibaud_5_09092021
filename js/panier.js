@@ -11,6 +11,7 @@ function main() {
     affichageCarte();
     viderPanier();
     totalPanier();
+    testFormAndPost();
 }
 
 function affichageCarte() {
@@ -58,8 +59,6 @@ on affiche le panier et on supprime le message d'erreur*/
             style: "currency",
             currency: "EUR",
         }).format(tabLS[article].price * tabLS[article].quantity);
-
-
     }
 }
 
@@ -103,4 +102,95 @@ function totalPanier() {
         }
       ).format(tabPrix))}`;
 }
+
+function testFormAndPost () {
+
+    //on récupère les inputs depuis le Dom
+    const submit = document.querySelector("#submit");
+    let inputPrenom = document.querySelector("#prenom");
+    let inputNom = document.querySelector("#nom");
+    let inputAdresse = document.querySelector("#adresse");
+    let inputCodePostal = document.querySelector("#codePostal");
+    let inputVille = document.querySelector("#ville");
+    let inputEmail = document.querySelector("#email");
+    let erreur = document.querySelector(".erreur");
+    
+    
+/* lors d'un clic, si l'un des champs n'est pas rempli,on affiche l'erreur, 
+et on empeche l'envoi du formulaire. on vérifie que le numéro est un nombre,
+sinon meme chose*/
+    submit.addEventListener("click",(e) => {
+        if (
+            !inputPrenom.value ||
+            !inputNom.value ||
+            !inputAdresse.value ||
+            !inputCodePostal.value ||
+            !inputVille.value ||
+            !inputEmail.value 
+        ) {
+        erreur.innerHTML = "Vous devez renseigner tous les champs !";
+        e.preventDefault();
+        
+        }
+        else {
+            /*si le formulaire est valide, le tableau acheter contiendra 
+            un tableau avec les produits acheté et order contiendra ce
+            tableau avec les infos du client*/
+        let articlesAchete = [];
+        articlesAchete.push(tabLS);
+
+        const ordre = {
+            contact: {
+                prenom: inputPrenom.value,
+                nom: inputNom.value,
+                adresse: inputAdresse.value,
+                codePostal: inputCodePostal.value,
+                ville: inputVille.value,
+                email: inputEmail.value,
+            },
+            produits: articlesAchete,
+        };
+
+        //---------envoi de la requete POST au back-end---------
+        //création de l'entete de la requete
+        const options = {
+            method: "POST",
+            body: JSON.stringify(ordre),
+            headers: { "Content-Type": "application/json" },
+        };
+        console.log(options);
+        //préparation du prix  pour l'affichage sur la page confirmation
+        let prixConfirmation = document.querySelector(".total").innerText;
+        prixConfirmation = prixConfirmation.split(" :");
+
+        /* envoie de la requete avec l'en-tete. on changera de page avec
+        un LS qui ne contiendra plus que l'ordre id et le prix*/
+        fetch("http://localhost:3000/api/teddies/order", options)
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                localStorage.clear();
+                console.log(data);
+                localStorage.setItem("ordreId", data.orderId);
+                localStorage.setItem("total", prixConfirmation[1]);
+
+            /*//  On peut commenter cette ligne pour vérifier le statut 201 de 
+            la requête fetch. Le fait de préciser la destination du lien ici et 
+            non dans la balise <a> du HTML permet d'avoir le temps de placer les
+            éléments comme l'orderId dans le localStorage avant le changement de page.*/
+                document.location.href = "confirmation.html";
+            })
+            .catch((err) => {
+            alert("Il y a eu une erreur : " + err);
+            });
+        
+    }
+  });
+}
+
+            
+
+
+                
+       
+    
 

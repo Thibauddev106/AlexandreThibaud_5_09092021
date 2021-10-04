@@ -60,9 +60,17 @@ function ajouterAuPanier() {
                 _id: id,
             };
 
-            // gestion localStorage
+            // ------------gestion localStorage-----------
             let tabProduitsPanier = [];
-            
+            //fonction fenetre pop up
+            const popupConfirmation = () => {
+                if(window.confirm(`L'article ${produitAjoute.name} a bien été ajouté au panier
+OK pour consultez le panier ou Annuler pour revenir à l'accueil`)){
+                    window.location.href = "panier.html";}
+                else {
+                    window.location.href = "index.html";
+                }
+            }
             /* si le localStorage est rempli, on récupère son contenu,
             on l'insère dans le tableau tabProduitsPanier,
             et on le renvoit vers le localStorage avec le nouveau produit ajouté.*/
@@ -70,11 +78,14 @@ function ajouterAuPanier() {
                 tabProduitsPanier = JSON.parse(localStorage.getItem("produits"));
                 tabProduitsPanier.push(produitAjoute);
                 localStorage.setItem("produits", JSON.stringify(tabProduitsPanier));
+                popupConfirmation();
             }
             else {
-            // si le localStorage est vide, on le crée avec le produit ajouté
-            tabProduitsPanier.push(produitAjoute);
-            localStorage.setItem("produits", JSON.stringify(tabProduitsPanier));
+                // si le localStorage est vide, on le crée avec le produit ajouté
+                tabProduitsPanier.push(produitAjoute);
+                localStorage.setItem("produits", JSON.stringify(tabProduitsPanier));
+                popupConfirmation();
+            
             }
         }
     });
