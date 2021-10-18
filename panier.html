@@ -14,11 +14,11 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
         <div class="container-fluid">
-            <a class="navbar-brand text-secondary fw-bold" href="index.html">Orinico</a>
+            <a class="navbar-brand text-primary fw-bold" href="index.html">Orinico</a>
             <a class="btnPanier" href="panier.html"><button class="btn btn-secondary my-2 my-sm-0"  type="submit">Votre Panier</button></a>
         </div>
     </nav>
-    <main class="bg-secondary">
+    <main class="bg-light">
         <div class="container">
             <div class="cartePanier">
                 <h2 class="cartetitre text-center my-4">Votre panier</h2>
@@ -43,29 +43,35 @@
                     <h2 class="h2 text-center mb-4">Votre panier est vide !</h2>
                 </div>
             </div>
-            <form>
-                <h3 class="titreForm text-center text-white">Votre adresse de livraison</h2>
+            <form action="" method="POST" id="inscription">
+                <h3 class="titreForm text-center ">Votre adresse de livraison</h2>
                 <div class="form-group my-3">
-                    <input type="text" class="form-control item" id="prenom" placeholder="Prénom" required>
+                    <input type="text" class="form-control item" id="prenom" name="prenom" placeholder="Prénom" required>
+                    <small></small>
                 </div>
                 <div class="form-group my-3">
-                <input type="text" class="form-control item" id="nom" placeholder="Nom" required>
+                    <input type="text" class="form-control item" id="nom" name="nom" placeholder="Nom" required>
+                    <small></small>
                 </div>
                 <div class="form-group my-3">
-                    <input type="text" class="form-control item" id="adresse" placeholder="Adresse" required>
+                    <input type="text" class="form-control item" id="adresse" name="adresse" placeholder="Adresse" required>
+                    <small></small>
                 </div>
                 <div class="form-group my-3">
-                    <input type="text" class="form-control item" id="codePostal" placeholder="Code Postal" required>
+                    <input type="text" class="form-control item" id="ville" name="ville" placeholder="Ville" required>
+                    <small></small>
                 </div>
                 <div class="form-group my-3">
-                    <input type="text" class="form-control item" id="ville" placeholder="Ville" required>
+                    <input type="text" class="form-control item" id="codePostal" name="codePostal" placeholder="Code postal" required>
+                    <small></small>
                 </div>
                 <div class="form-group my-3">
-                    <input type="email" class="form-control item" id="email" placeholder="Email" required>
+                    <input type="email" class="form-control item" id="email" name="email" placeholder="Email" required>
+                    <small></small>
                 </div>
                 <div class="erreur"></div>
                 <div class="btnCommander text-center my-3">
-                    <button type="submit" class="btn btn-block btn-primary my-5 btn-lg text-center" id="submit">Commander</button>
+                    <button type="submit" class="btn btn-block btn-primary my-5 btn-lg text-center" name="submit" id="submit">Commander</button>
                 </div>
             </form>
             <div class="carteConfirmation">
@@ -83,3 +89,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
 </body>
+</html>

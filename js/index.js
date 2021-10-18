@@ -49,11 +49,7 @@ function getArticles() {
                 resultat[article].price = resultat[article].price/100;
                 produitInfoPrix.innerText = new Intl.NumberFormat("fr-FR", {
                     style: "currency", currency: "EUR",
-                }).format(resultat[article].price);
-
-
-                
-                    }
-                });
-                
-    }
+                }).format(resultat[article].price);               
+            }
+        });
+}

@@ -1,13 +1,14 @@
 
 
+
 function affichageOrdreIdEtPrix() {
-  const totalConfirmation = document.querySelector(".total span");
-  const orderId = document.querySelector(".ordreId span");
   
-  totalConfirmation.innerText = localStorage.getItem("total");
-  orderId.innerText = localStorage.getItem("orderId");
+  const totalPrix = document.querySelector(".montant span");
+  const orderId = document.querySelector(".numero span");
   
-  // On vide le localStorage pour recommencer plus tard le processus d'achat
+  totalPrix.innerText = localStorage.getItem("totalCommade");
+  orderId.innerText = localStorage.getItem("idCommande");
+  //On vide le localStorage pour recommencer plus tard le processus d'achat
   localStorage.clear(); 
 }
 

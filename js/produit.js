@@ -74,16 +74,16 @@ OK pour consultez le panier ou Annuler pour revenir à l'accueil`)){
             /* si le localStorage est rempli, on récupère son contenu,
             on l'insère dans le tableau tabProduitsPanier,
             et on le renvoit vers le localStorage avec le nouveau produit ajouté.*/
-            if (localStorage.getItem("produits") !== null) {
-                tabProduitsPanier = JSON.parse(localStorage.getItem("produits"));
+            if (localStorage.getItem("products") !== null) {
+                tabProduitsPanier = JSON.parse(localStorage.getItem("products"));
                 tabProduitsPanier.push(produitAjoute);
-                localStorage.setItem("produits", JSON.stringify(tabProduitsPanier));
+                localStorage.setItem("products", JSON.stringify(tabProduitsPanier));
                 popupConfirmation();
             }
             else {
                 // si le localStorage est vide, on le crée avec le produit ajouté
                 tabProduitsPanier.push(produitAjoute);
-                localStorage.setItem("produits", JSON.stringify(tabProduitsPanier));
+                localStorage.setItem("products", JSON.stringify(tabProduitsPanier));
                 popupConfirmation();
             
             }
