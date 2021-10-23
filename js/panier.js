@@ -6,16 +6,6 @@ let produitEnregistrer = document.querySelector(".cartePanier__recap");
 let tabLS = JSON.parse(localStorage.getItem("products"));
 console.log(tabLS)
 
-main();
-
-function main() {
-    affichageCarte();
-    viderPanier();
-    totalPanier();
-    
-
-}
-
 function affichageCarte() {
     let test = document.querySelector(".boutonsDuPanier");
     let carteProduit = document.querySelector(".cartePanier");
@@ -63,6 +53,7 @@ function affichageCarte() {
         }).format(tabLS[article].price * tabLS[article].quantity);
     }
 }
+affichageCarte();
 
 function viderPanier() {
 
@@ -72,6 +63,7 @@ function viderPanier() {
         localStorage.clear();
     });
 }
+viderPanier();
 
 function totalPanier() {
     let tabPrix = [];
@@ -103,437 +95,226 @@ function totalPanier() {
         }
     ).format(tabPrix))}`;
     console.log(tabPrix);
-}   
+}
+totalPanier();
+
 //-------------------------Le formulaire de commande-------------------------
-    //-----------gestion validation du formulaire-------------
-    let form = document.querySelector("#inscription");
-    // Ecouter la modification de chaque champ
-    form.prenom.addEventListener("change",function() {
-        validPrenom(this);
-    })
-    form.nom.addEventListener("change",function() {
-        validNom(this);
-    })
-    form.adresse.addEventListener("change",function() {
-        validAdresse(this);
-    })
-    form.ville.addEventListener("change",function() {
-        validVille(this);
-    })
-    form.codePostal.addEventListener("change",function() {
-        validCodePostal(this);
-    })
-    form.email.addEventListener("change",function() {
-        validEmail(this);
-    })
-    
-    //************* Validation Prenom ***********/
-    
-    const validPrenom = function(inputPrenom) {
-        //creation de la reg exp pour validation prenom
-        let prenomRegExp = new RegExp("^([A-Za-z]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$","g");
-        
-        //Recuparation de la balise SMALL
-        let small = inputPrenom.nextElementSibling;
-        //On test l'expression regulière
-        if (prenomRegExp.test(inputPrenom.value)) {
-            small.innerHTML = "Prénom Valide";
-            small.classList.remove("text-danger");
-            small.classList.add("text-success");
-            document.getElementById("prenom").style.border="2px solid green";
-            return true;
-        } else {
-            small.innerHTML ="Prénom non Valide";
-            small.classList.remove("text-success");
-            small.classList.add("text-danger");
-            document.getElementById("prenom").style.border="2px solid red";
-            return false;
-        }
-    }
-    //************* Validation Nom ***********/
-    const validNom = function(inputNom) {
-        //creation de la reg exp pour validation nom
-        let nomRegExp = new RegExp("^([A-Za-z]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$","g");
-        
-        //Recuparation de la balise SMALL
-        let small = inputNom.nextElementSibling;
-        //On test l'expression regulière
-        if (nomRegExp.test(inputNom.value)) {
-            small.innerHTML = "Nom Valide";
-            small.classList.remove("text-danger");
-            small.classList.add("text-success");
-            document.getElementById("nom").style.border="2px solid green";
-            return true;
-        } else {
-            small.innerHTML ="Nom non Valide";
-            small.classList.remove("text-success");
-            small.classList.add("text-danger");
-            document.getElementById("nom").style.border="2px solid red";
-            return false;
-        }
-    }
-    //************* Validation Adresse ***********/
-    const validAdresse = function(inputAdresse) {
-        //creation de la reg exp pour validation nom
-        let adresseRegExp = new RegExp("^[a-zA-Z0-9\s,.'-]{3,}$","g");
-        
-        //Recuparation de la balise SMALL
-        let small = inputAdresse.nextElementSibling;
-        //On test l'expression regulière
-        if (adresseRegExp.test(inputAdresse.value)) {
-            small.innerHTML = "Adresse Valide";
-            small.classList.remove("text-danger");
-            small.classList.add("text-success");
-            document.getElementById("adresse").style.border="2px solid green";
-            return true;
-        } else {
-            small.innerHTML ="Adresse non Valide";
-            small.classList.remove("text-success");
-            small.classList.add("text-danger");
-            document.getElementById("adresse").style.border="2px solid red";
-            return false;
-        }
-    }
-    //************* Validation Ville ***********/
-    const validVille = function(inputVille) {
-        //creation de la reg exp pour validation ville
-        let villeRegExp = new RegExp("^([A-Za-z]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$","g");
-        
-        //Recuparation de la balise SMALL
-        let small = inputVille.nextElementSibling;
-        //On test l'expression regulière
-        if (villeRegExp.test(inputVille.value)) {
-            small.innerHTML = "Ville Valide";
-            small.classList.remove("text-danger");
-            small.classList.add("text-success");
-            document.getElementById("ville").style.border="2px solid green";
-            return true;
-        } else {
-            small.innerHTML ="Ville non Valide";
-            small.classList.remove("text-success");
-            small.classList.add("text-danger");
-            document.getElementById("ville").style.border="2px solid red";
-            return false;
-        }
-    }
-    //************* Validation Code postal ***********/
-    const validCodePostal = function(inputCodePostal) {
-        //creation de la reg exp pour validation nom
-        let codePostalRegExp = new RegExp("^[0-9]{5}$","g");
-        
-        //Recuparation de la balise SMALL
-        let small = inputCodePostal.nextElementSibling;
-        //On test l'expression regulière
-        if (codePostalRegExp.test(inputCodePostal.value)) {
-            small.innerHTML = "Code postal Valide";
-            small.classList.remove("text-danger");
-            small.classList.add("text-success");
-            document.getElementById("codePostal").style.border="2px solid green";
-            return true;
-        } else {
-            small.innerHTML ="Code postal non Valide";
-            small.classList.remove("text-success");
-            small.classList.add("text-danger");
-            document.getElementById("codePostal").style.border="2px solid red";
-            return false;
-        }
-    }
-    //************* Validation Email ***********/
-    const validEmail = function(inputEmail) {
-        //creation de la reg exp pour validation email
-        let emailRegExp = new RegExp("^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$", "g");
-        
-        //Recuparation de la balise SMALL
-        let small = inputEmail.nextElementSibling;
-        //On test l'expression regulière
-        if (emailRegExp.test(inputEmail.value)) {
-            small.innerHTML = "Email Valide";
-            small.classList.remove("text-danger");
-            small.classList.add("text-success");
-            document.getElementById("email").style.border="2px solid green";
-            return true;
-        } else {
-            small.innerHTML ="Email non Valide";
-            small.classList.remove("text-success");
-            small.classList.add("text-danger");
-            document.getElementById("email").style.border="2px solid red";
-            return false;
-        }
-    }
+//-----------gestion validation du formulaire-------------
+let form = document.querySelector("#inscription");
+// Ecouter la modification de chaque champ
+form.prenom.addEventListener("change",function() {
+    validPrenom(this);
+})
+form.nom.addEventListener("change",function() {
+    validNom(this);
+})
+form.adresse.addEventListener("change",function() {
+    validAdresse(this);
+})
+form.ville.addEventListener("change",function() {
+    validVille(this);
+})
+form.codePostal.addEventListener("change",function() {
+    validCodePostal(this);
+})
+form.email.addEventListener("change",function() {
+    validEmail(this);
+})
 
-    // Ecouter la soumission du formulaire
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        if (validPrenom(form.prenom) && validNom(form.nom) && validAdresse(form.adresse) && validVille(form.ville) 
-        && validCodePostal(form.codePostal) && validEmail(form.email))
-        {
-            alert("cool")
-              
-      //fonction pour créer la requete POST avec numero commande et les infos contact
-        let panier = []
-        
-        function requestPost() {
-            const idTableau = panier.map(function(product) {
-            return product.id;
-           });
+//************* Validation Prenom ***********/
+    
+const validPrenom = function(inputPrenom) {
+    //creation de la reg exp pour validation prenom
+    let prenomRegExp = new RegExp("^([A-Za-z]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$","g");
+    
+    //Recuparation de la balise SMALL
+    let small = inputPrenom.nextElementSibling;
+    //On test l'expression regulière
+    if (prenomRegExp.test(inputPrenom.value)) {
+        small.innerHTML = "Prénom Valide";
+        small.classList.remove("text-danger");
+        small.classList.add("text-success");
+        document.getElementById("prenom").style.border="2px solid green";
+        return true;
+    } else {
+        small.innerHTML ="Prénom non Valide";
+        small.classList.remove("text-success");
+        small.classList.add("text-danger");
+        document.getElementById("prenom").style.border="2px solid red";
+        return false;
+    }
+}
+//************* Validation Nom ***********/
+const validNom = function(inputNom) {
+    //creation de la reg exp pour validation nom
+    let nomRegExp = new RegExp("^([A-Za-z]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$","g");
+    
+    //Recuparation de la balise SMALL
+    let small = inputNom.nextElementSibling;
+    //On test l'expression regulière
+    if (nomRegExp.test(inputNom.value)) {
+        small.innerHTML = "Nom Valide";
+        small.classList.remove("text-danger");
+        small.classList.add("text-success");
+        document.getElementById("nom").style.border="2px solid green";
+        return true;
+    } else {
+        small.innerHTML ="Nom non Valide";
+        small.classList.remove("text-success");
+        small.classList.add("text-danger");
+        document.getElementById("nom").style.border="2px solid red";
+        return false;
+    }
+}
+//************* Validation Adresse ***********/
+const validAdresse = function(inputAdresse) {
+    //creation de la reg exp pour validation nom
+    let adresseRegExp = new RegExp("^[a-zA-Z0-9]{3,50}$","g");
+    
+    //Recuparation de la balise SMALL
+    let small = inputAdresse.nextElementSibling;
+    //On test l'expression regulière
+    if (adresseRegExp.test(inputAdresse.value)) {
+        small.innerHTML = "Adresse Valide";
+        small.classList.remove("text-danger");
+        small.classList.add("text-success");
+        document.getElementById("adresse").style.border="2px solid green";
+        return true;
+    } else {
+        small.innerHTML ="Adresse non Valide";
+        small.classList.remove("text-success");
+        small.classList.add("text-danger");
+        document.getElementById("adresse").style.border="2px solid red";
+        return false;
+    }
+}
+//************* Validation Ville ***********/
+const validVille = function(inputVille) {
+    //creation de la reg exp pour validation ville
+    let villeRegExp = new RegExp("^([A-Za-z]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$","g");
+    
+    //Recuparation de la balise SMALL
+    let small = inputVille.nextElementSibling;
+    //On test l'expression regulière
+    if (villeRegExp.test(inputVille.value)) {
+        small.innerHTML = "Ville Valide";
+        small.classList.remove("text-danger");
+        small.classList.add("text-success");
+        document.getElementById("ville").style.border="2px solid green";
+        return true;
+    } else {
+        small.innerHTML ="Ville non Valide";
+        small.classList.remove("text-success");
+        small.classList.add("text-danger");
+        document.getElementById("ville").style.border="2px solid red";
+        return false;
+    }
+}
+//************* Validation Code postal ***********/
+const validCodePostal = function(inputCodePostal) {
+    //creation de la reg exp pour validation nom
+    let codePostalRegExp = new RegExp("^[0-9]{5}$","g");
+    
+    //Recuparation de la balise SMALL
+    let small = inputCodePostal.nextElementSibling;
+    //On test l'expression regulière
+    if (codePostalRegExp.test(inputCodePostal.value)) {
+        small.innerHTML = "Code postal Valide";
+        small.classList.remove("text-danger");
+        small.classList.add("text-success");
+        document.getElementById("codePostal").style.border="2px solid green";
+        return true;
+    } else {
+        small.innerHTML ="Code postal non Valide";
+        small.classList.remove("text-success");
+        small.classList.add("text-danger");
+        document.getElementById("codePostal").style.border="2px solid red";
+        return false;
+    }
+}
+//************* Validation Email ***********/
+const validEmail = function(inputEmail) {
+    //creation de la reg exp pour validation email
+    let emailRegExp = new RegExp("^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$", "g");
+    
+    //Recuparation de la balise SMALL
+    let small = inputEmail.nextElementSibling;
+    //On test l'expression regulière
+    if (emailRegExp.test(inputEmail.value)) {
+        small.innerHTML = "Email Valide";
+        small.classList.remove("text-danger");
+        small.classList.add("text-success");
+        document.getElementById("email").style.border="2px solid green";
+        return true;
+    } else {
+        small.innerHTML ="Email non Valide";
+        small.classList.remove("text-success");
+        small.classList.add("text-danger");
+        document.getElementById("email").style.border="2px solid red";
+        return false;
+    }
+}
+
+// Ecouter la soumission du formulaire
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    if (validPrenom(form.prenom) && validNom(form.nom) && validAdresse(form.adresse) && validVille(form.ville) 
+    && validCodePostal(form.codePostal) && validEmail(form.email))
+    {  
+    //fonction pour créer la requete POST avec numero commande et les infos contact
+    function requestPost() {
+        let order = {
+            contact: {
+                firstName: document.querySelector("#prenom").value.trim(),
+                lastName: document.querySelector("#nom").value.trim(),
+                address: document.querySelector("#adresse").value.trim(),
+                city: document.querySelector("#ville").value.trim(),
+                email: document.querySelector("#email").value.trim(),
+            },
+            products: [], 
+        };
+        //on crée notre requete post vers API
+        // en lui passant les parametre les données a envoyer
+        const request = new Request("http://localhost:3000/api/teddies/order",
+            {
+                method: "POST",
+                body: JSON.stringify(order),
+                headers: new Headers({
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                }),
+            });
+        // Préparation du prix formaté pour l'afficher sur la prochaine page
+        let prixConfirmation = document.querySelector(".total").innerText;
+        prixConfirmation = prixConfirmation.split(" :");
+        // Envoi de la requête
+        fetch(request)
+            .then((response) => response.json())
+            .then((response) => {
+                //on récupère la réponse de l'API pour obtenir numéro de commande
+                let numCommand = response.orderId;
+                console.log(numCommand);
+                //localStorage.setItem("produits",JSON.stringify(tabLS));
+                // On met à jour le localStorage avec le numéro de commande
+                localStorage.setItem("idCommande", JSON.stringify(numCommand));
+                // on met à jour le localStorage avec infos de commande
+                localStorage.setItem("infosOrder", JSON.stringify(order));
+                // On met à jour le localStorage avec le prix de la commande
+                localStorage.setItem("totalCommade", JSON.stringify(prixConfirmation[1]));
+            });
             
-            let order = {
-                contact: {
-                    firstName: document.querySelector("#prenom").value.trim(),
-                    lastName: document.querySelector("#nom").value.trim(),
-                    address: document.querySelector("#adresse").value.trim(),
-                    city: document.querySelector("#ville").value.trim(),
-                    email: document.querySelector("#email").value.trim(),
-                },
-                products: idTableau, 
-            };
-            console.log(order);
-            console.log("commande valide")
-        
-            //on crée notre requete post vers API
-            // en lui passant les parametre les données a envoyer
-            const request = new Request("http://localhost:3000/api/teddies/order",
-                {
-                    method: "POST",
-                    body: JSON.stringify(order),
-                    headers: new Headers({
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                    }),
-                });
-            // Préparation du prix formaté pour l'afficher sur la prochaine page
-            let prixConfirmation = document.querySelector(".total").innerText;
-            prixConfirmation = prixConfirmation.split(" :");
-            // Envoi de la requête
-            fetch(request)
-                .then((response) => response.json())
-                .then((response) => {
-                    //on récupère la réponse de l'API pour obtenir numéro de commande
-                    let numCommand = response.orderId;
-                    console.log(numCommand);
-                    // On met à jour le localStorage avec le numéro de commande
-                    localStorage.setItem("idCommande", JSON.stringify(numCommand));
-                    // on met à jour le localStorage avec infos de commande
-                    localStorage.setItem("infosOrder", JSON.stringify(order));
-                    // On met à jour le localStorage avec le prix de la commande
-                    localStorage.setItem("totalCommade", JSON.stringify(prixConfirmation[1]));
-                });
-                
-            // fonction pour confirmer la commande et ouvrir la page confirmation
-            function confirmer() {
-                alert("la commande est confirmer");
-                setTimeout(function () { window.location = "confirmation.html"},3000);
-            }
-            confirmer();
+        // fonction pour confirmer la commande et ouvrir la page confirmation
+        function confirmer() {
+            alert("la commande est confirmée");
+            setTimeout(function () { window.location = "confirmation.html"},3000);
         }
-        requestPost()
-        } else {
-            alert("Veuillez bien remplir le formulaire"); 
-        } 
-                
-    });
-    
-
-    
-    // const textAlert = (value) => {
-    //     return `${value}: Chiffre et symbole ne sont pas autorisé \n Ne pas dépasser 20 caractères, minimum 3 caractères`;
-    // }
-    // const regExPrenomNomVille = (value) => {
-    //     return /^([A-Za-z]{3,20})?([-]{0,1})?([A-Za-z]{3,20})$/.test(value);
-    // }
-    // const regExEmail = (value) => {
-    //     return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
-    // }
-    // const regExAdresse = (value) => {
-    //     return /^[A-Za-z0-9\s]{5,50}$/.test(value);
-    // }
-    // const regExCodePostal = (value) => {
-    //     return /^[0-9]{5}$/.test(value);
-    // }
-
-    // // fonction pour gérer l'affichage du texte à coté de l'input pour indiquer qu'il faut le remplir correctement
-    // function dataChampManquantTexteVide(querySelectorId) {
-    //     document.querySelector(`#${querySelectorId}`).textContent = "";
-    // };
-
-    // function dataChampManquantText(querySelectorId) {
-    //     document.querySelector(`#${querySelectorId}`).textContent = "Veuillez bien remplir ce champ";
-    // };
-
-    // function prenomControle(){
-    //         // Controle de la validité du prenom
-    //     const lePrenom = formulaireValues.prenom;
-    //     if(regExPrenomNomVille(lePrenom)){
-    //         dataChampManquantTexteVide("prenomManquant");
-    //         return true;
-    //     }else{
-    //         dataChampManquantText("prenomManquant");
-    //         alert(textAlert("Prénom"));
-    //         document.getElementById("prenom").style.border="2px solid red";
-    //         return false;
-    //     }
-    // };
-
-    // function nomControle() {
-    //     // Controle de la validité du nom
-    //     const leNom = formulaireValues.nom;
-    //     if(regExPrenomNomVille(leNom)){
-    //         dataChampManquantTexteVide("nomManquant");
-    //         return true;
-    //     }else{
-    //         dataChampManquantText("nomManquant");
-    //         alert(textAlert("Nom"));
-    //         document.getElementById("nom").style.border="2px solid red";
-
-    //         return false;
-    //     }
-    // };
-
-    // function addresseControle() {
-    //     // Controle de la validité de l'adresse
-    //     const leAdresse = formulaireValues.adresse;
-    //     if(regExAdresse(leAdresse)) {
-    //         dataChampManquantTexteVide("adresseManquant");
-    //         return true
-    //     } else {
-    //         dataChampManquantText("adresseManquant");
-    //         alert("L'adresse doit contenir que des lettres sans ponctuation et des chiffres")
-    //         document.getElementById("adresse").style.border="2px solid red";
-    //         return false
-    //     }
-    // };
-
-    // function villeControle() {
-    //     // Controle de la validité de la ville
-    //     const laVille = formulaireValues.ville;
-    //     if(regExPrenomNomVille(laVille)){
-    //         dataChampManquantTexteVide("villeManquant");
-    //         return true;
-    //     }else{
-    //         dataChampManquantText("villeManquant");
-    //         alert(textAlert("Ville"));
-    //         document.getElementById("ville").style.border="2px solid red";
-    //         return false;
-    //     }
-    // };
-
-    // function codePostalControle() {
-    //     // Controle de la validité du code postal
-    //     const leCodePostal = formulaireValues.codePostal;
-    //     if(regExCodePostal(leCodePostal)) {
-    //         dataChampManquantTexteVide("codePostalManquant");
-    //         return true;
-    //     }else{
-    //         dataChampManquantText("codePostalManquant");
-    //         alert(textAlert("Code Postal : doit être composé de 5 chiffres"));
-    //         document.getElementById("codePostal").style.border="2px solid red";
-    //         return false;
-    //     }
-    // };
-
-    // function emailControle() {
-    //     // Controle de la validité de l'email
-    //     const leEmail = formulaireValues.email;
-    //     if(regExEmail(leEmail)) {
-    //         dataChampManquantTexteVide("emailManquant");
-    //         return true;
-    //     }else{
-    //         dataChampManquantText("emailManquant");
-    //         alert("L'email n'est pas valide");
-    //         document.getElementById("email").style.border="2px solid red";
-    //         return false;
-    //     }
-    // };
-
-    // Controle validité formulaire avant envoie dans le local storage
-    // if(prenomControle() && nomControle() && addresseControle() && villeControle() && codePostalControle() && emailControle()) {
-        
-    //   //fonction pour créer la requete POST avec numero commande et les infos contact
-    //     let panier = []
-        
-    //     function requestPost() {
-    //         const idTableau = panier.map(function(product) {
-    //         return product.id;
-    //        });
-            
-    //         let order = {
-    //             contact: {
-    //                 firstName: document.querySelector("#prenom").value.trim(),
-    //                 lastName: document.querySelector("#nom").value.trim(),
-    //                 address: document.querySelector("#adresse").value.trim(),
-    //                 city: document.querySelector("#ville").value.trim(),
-    //                 email: document.querySelector("#email").value.trim(),
-    //             },
-    //             products: idTableau, 
-    //         };
-    //         console.log(order);
-    //         console.log("commande valide")
-        
-    //         //on crée notre requete post vers API
-    //         // en lui passant les parametre les données a envoyer
-    //         const request = new Request("http://localhost:3000/api/teddies/order",
-    //             {
-    //                 method: "POST",
-    //                 body: JSON.stringify(order),
-    //                 headers: new Headers({
-    //                     Accept: "application/json",
-    //                     "Content-Type": "application/json",
-    //                 }),
-    //             });
-    //         // Préparation du prix formaté pour l'afficher sur la prochaine page
-    //         let prixConfirmation = document.querySelector(".total").innerText;
-    //         prixConfirmation = prixConfirmation.split(" :");
-    //         // Envoi de la requête
-    //         fetch(request)
-    //             .then((response) => response.json())
-    //             .then((response) => {
-    //                 //on récupère la réponse de l'API pour obtenir numéro de commande
-    //                 let numCommand = response.orderId;
-    //                 console.log(numCommand);
-    //                 // On met à jour le localStorage avec le numéro de commande
-    //                 localStorage.setItem("idCommande", JSON.stringify(numCommand));
-    //                 // on met à jour le localStorage avec infos de commande
-    //                 localStorage.setItem("infosOrder", JSON.stringify(order));
-    //                 // On met à jour le localStorage avec le prix de la commande
-    //                 localStorage.setItem("totalCommade", JSON.stringify(prixConfirmation[1]));
-    //             });
-                
-    //         // fonction pour confirmer la commande et ouvrir la page confirmation
-    //         function confirmer() {
-    //             alert("la commande est confirmer");
-    //             setTimeout(function () { window.location = "confirmation.html"},3000);
-    //         }
-    //         confirmer();
-    //     }
-    //     requestPost()
-    // } else {
-    //     alert("Veuillez bien remplir le formulaire"); 
-    //     } 
-              
-//});
-
-     
-    /*-----------------------Mettre le contenu du LS dans les champs du formulaire----------------------
-    // Prendre la key dans le LS et la mettre dans une variable
-    const dataLS = localStorage.getItem("formulaireValues");
-
-    // Convertir la chaine de caractère en objet javascript
-    const dataLSObjet = JSON.parse(dataLS);
-
-     Fonction pour que le champ du formulaire soit rempli par les données du LS si elle existe
-    function remplirChampDepuisLS(input) {
-        if(dataLSObjet == null){
-        } else {
-            document.querySelector(`#${input}`).value = dataLSObjet[input];
-        }
-    };
-    remplirChampDepuisLS("prenom");
-    remplirChampDepuisLS("nom");
-    remplirChampDepuisLS("adresse");
-    remplirChampDepuisLS("ville");
-    remplirChampDepuisLS("email");*/
-
-//-------------------fin-gestion validation du formulaire---------
+        confirmer();
+    }
+    requestPost()
+    } else {
+        alert("Veuillez bien remplir le formulaire"); 
+    }            
+});
 
             
 
