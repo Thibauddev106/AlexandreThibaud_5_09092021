@@ -294,7 +294,7 @@ form.addEventListener("submit", function(e) {
                 //on récupère la réponse de l'API pour obtenir numéro de commande
                 let numCommand = response.orderId;
                 console.log(numCommand);
-                //localStorage.setItem("produits",JSON.stringify(tabLS));
+                
                 // On met à jour le localStorage avec le numéro de commande
                 localStorage.setItem("idCommande", JSON.stringify(numCommand));
                 // on met à jour le localStorage avec infos de commande
